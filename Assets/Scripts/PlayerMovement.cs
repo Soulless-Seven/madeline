@@ -45,6 +45,7 @@ public class PlayerMovement : MonoBehaviour
         float transX = Input.GetAxis("Horizontal");
 
         float vZ = transZ > 0 ? transZ * ForwardVelocity : transZ * BackwardVelocity;
-        _rigidbody.velocity = Quaternion.Euler(0, _currRotation.x, 0) * new Vector3(transX * LateralVelocity, 0, vZ);
+        _rigidbody.velocity = Quaternion.Euler(0, _currRotation.x, 0) * 
+            new Vector3(transX * LateralVelocity, _rigidbody.velocity.y, vZ);
     }
 }
