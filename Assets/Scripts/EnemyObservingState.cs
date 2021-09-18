@@ -4,16 +4,17 @@ using UnityEngine;
 
 public class EnemyObservingState : EnemyBaseState
 {
-    private int observeDegrees;
+    private float observeRotation;
+    private float rotateSpeed;
 
     public override void EnterState(EnemyController enemy)
     {
-        observeDegrees = enemy.observeDegrees;
+        observeRotation = enemy.observeRotation;
+        rotateSpeed = enemy.rotateSpeed;
     }
 
     public override void Update(EnemyController enemy)
     {
-        Vector3 to = new Vector3(0, observeDegrees, 0);
-        enemy.transform.eulerAngles = Vector3.Lerp(enemy.transform.rotation.eulerAngles, to, Time.deltaTime);
+        enemy.transform.rotation = Quaternion.Euler(0f, observeRotation * Mathf.Sin(Time.time * rotateSpeed), 0f);
     }
 }

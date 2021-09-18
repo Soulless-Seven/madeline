@@ -5,7 +5,8 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     [Header("Observing State:")]
-    [Range(1, 180)] public int observeDegrees;
+    [Range(1.0f, 180.0f)] public float observeRotation;
+    public float rotateSpeed;
 
     private EnemyBaseState currentState;
     public EnemyBaseState CurrentState { get => currentState; }
