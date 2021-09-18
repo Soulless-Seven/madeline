@@ -11,7 +11,8 @@ public class EnemyController : MonoBehaviour
     private EnemyBaseState currentState;
     public EnemyBaseState CurrentState { get => currentState; }
 
-    public readonly EnemyObservingState ObservingState = new EnemyObservingState(); 
+    public readonly EnemyObservingState ObservingState = new EnemyObservingState();
+    public readonly EnemyWanderState WanderState = new EnemyWanderState();
 
     // Start is called before the first frame update
     void Start()
