@@ -7,6 +7,10 @@ public class EnemyController : MonoBehaviour
     [Header("Observing State:")]
     [Range(1.0f, 180.0f)] public float observeRotation;
     public float rotateSpeed;
+    public float observeTime;
+
+    [Header("Wander State:")]
+    public List<Vector3> wanderCoordinates;
 
     private EnemyBaseState currentState;
     public EnemyBaseState CurrentState { get => currentState; }
@@ -14,7 +18,6 @@ public class EnemyController : MonoBehaviour
     public readonly EnemyObservingState ObservingState = new EnemyObservingState();
     public readonly EnemyWanderState WanderState = new EnemyWanderState();
 
-    // Start is called before the first frame update
     void Start()
     {
         TransitionToState(ObservingState);
