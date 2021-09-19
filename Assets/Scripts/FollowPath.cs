@@ -44,7 +44,7 @@ public class FollowPath : MonoBehaviour
         HandleMovement();
     }
 
-    void HandleMovement()
+    private void HandleMovement()
     {
         if (_targets.Count == 0)
         {
@@ -53,7 +53,9 @@ public class FollowPath : MonoBehaviour
 
         if (step < Steps)
         {
-            transform.position = Vector3.Lerp(_lastPos, _targets.Peek(), (float)step / Steps);
+            Vector3 currTarget = _targets.Peek();
+            transform.position = Vector3.Lerp(_lastPos, currTarget, (float)step / Steps);
+            transform.rotation = Quaternion.LookRotation((currTarget - _lastPos).normalized);
             step++;
         }
         else if (step == Steps)
