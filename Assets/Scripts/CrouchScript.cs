@@ -18,9 +18,9 @@ public class CrouchScript : MonoBehaviour
     void Update()
     {
         //Crouch
-        if (Input.GetKeyDown(KeyCode.LeftControl))
+        if (Input.GetButtonDown("Crouch"))
             Crouch();
-        else if (Input.GetKeyUp(KeyCode.LeftControl))
+        else if (Input.GetButtonDown("Crouch"))
             GoUp();
     }
 
