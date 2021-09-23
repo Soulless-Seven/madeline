@@ -32,5 +32,26 @@ public class EnemyController : MonoBehaviour
     {
         currentState = state;
         currentState.EnterState(this);
+
+        StopCoroutine("FindTargetsWithDelay");
+
+        if (state == ObservingState || state == WanderState)
+        {
+            StartCoroutine("FindTargetsWithDelay", 0.2f);
+        }
+    }
+
+    private IEnumerator FindTargetsWithDelay(float delay)
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(delay);
+            FindVisibleTargets();
+        }
+    }
+
+    private void FindVisibleTargets()
+    {
+
     }
 }
