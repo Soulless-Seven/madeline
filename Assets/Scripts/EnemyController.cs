@@ -11,6 +11,8 @@ public class EnemyController : MonoBehaviour
     public LayerMask targetMask;
     public LayerMask obstacleMask;
 
+    public GameObject target;
+
     [HideInInspector]
     public List<Transform> visibleTargets = new List<Transform>();
 
@@ -25,6 +27,8 @@ public class EnemyController : MonoBehaviour
     [Header("Chase State")]
     [HideInInspector]
     public bool chasingPlayer = false;
+    [HideInInspector]
+    public bool playerInSight = false;
 
     private EnemyBaseState currentState;
     public EnemyBaseState CurrentState { get => currentState; }
@@ -49,9 +53,12 @@ public class EnemyController : MonoBehaviour
         currentState = state;
         currentState.EnterState(this);
 
-        chasingPlayer = false;
         StopCoroutine("FindTargetsWithDelay");
 
+        if (state != ChaseState) 
+        {
+            chasingPlayer = false;
+        }
         if (state == ObservingState || state == WanderState)
         {
             StartCoroutine("FindTargetWithDelay", 0.2f);
@@ -86,7 +93,11 @@ public class EnemyController : MonoBehaviour
                 {
                     visibleTargets.Add(target);
                     chasingPlayer = true;
-                    TransitionToState(ChaseState);
+                    playerInSight = true;
+                }
+                else 
+                {
+                    playerInSight = false;
                 }
             }
         }

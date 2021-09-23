@@ -23,10 +23,16 @@ public class TargetTest : MonoBehaviour
     {
         beingChased = enemyController.chasingPlayer;
 
-        if (agent.velocity == Vector3.zero && beingChased)
+        if (!agent.pathPending && beingChased)
         {
-            nextPosition = nextPosition + 1 < runCoordinates.Count ? nextPosition + 1 : 0;
-            agent.SetDestination(runCoordinates[nextPosition]);
+            if (agent.remainingDistance <= agent.stoppingDistance)
+            {
+                if (!agent.hasPath || agent.velocity.sqrMagnitude == 0f)
+                {
+                    nextPosition = nextPosition + 1 < runCoordinates.Count ? nextPosition + 1 : 0;
+                    agent.SetDestination(runCoordinates[nextPosition]);
+                }
+            }
         }
     }
 }
