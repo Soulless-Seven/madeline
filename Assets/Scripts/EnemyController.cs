@@ -22,11 +22,16 @@ public class EnemyController : MonoBehaviour
     [Header("Wander State:")]
     public List<Vector3> wanderCoordinates;
 
+    [Header("Chase State")]
+    [HideInInspector]
+    public bool chasingPlayer = false;
+
     private EnemyBaseState currentState;
     public EnemyBaseState CurrentState { get => currentState; }
 
     public readonly EnemyObservingState ObservingState = new EnemyObservingState();
     public readonly EnemyWanderState WanderState = new EnemyWanderState();
+    public readonly EnemyChaseState ChaseState = new EnemyChaseState();
 
 
     void Start()
@@ -44,6 +49,7 @@ public class EnemyController : MonoBehaviour
         currentState = state;
         currentState.EnterState(this);
 
+        chasingPlayer = false;
         StopCoroutine("FindTargetsWithDelay");
 
         if (state == ObservingState || state == WanderState)
@@ -79,7 +85,8 @@ public class EnemyController : MonoBehaviour
                 if (!Physics.Raycast(transform.position, dirToTarget, dstToTarget, obstacleMask))
                 {
                     visibleTargets.Add(target);
-                    //TransitionToState();
+                    chasingPlayer = true;
+                    TransitionToState(ChaseState);
                 }
             }
         }
