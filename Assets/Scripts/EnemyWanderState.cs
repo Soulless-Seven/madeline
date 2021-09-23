@@ -12,6 +12,7 @@ public class EnemyWanderState : EnemyBaseState
 
     public override void EnterState(EnemyController enemy)
     {
+        Debug.Log("wandering");
         wanderCoordinates = enemy.wanderCoordinates;
         agent = enemy.GetComponent<NavMeshAgent>();
 
@@ -21,6 +22,10 @@ public class EnemyWanderState : EnemyBaseState
 
     public override void Update(EnemyController enemy)
     {
+        if (enemy.chasingPlayer) 
+        {
+            enemy.TransitionToState(enemy.ChaseState);
+        }
         if (agent.velocity == Vector3.zero)
         {
             enemy.TransitionToState(enemy.ObservingState);

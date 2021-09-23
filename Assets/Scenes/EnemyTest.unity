@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3168,7 +3168,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1872617145}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.79, y: 0.71, z: 11.63}
+  m_LocalPosition: {x: -5.17, y: 0.71, z: 11.28}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3184,7 +3184,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 4
+  m_Speed: 5
   m_Acceleration: 10
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -3209,10 +3209,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   runCoordinates:
-  - {x: 0.79, y: 0.71, z: 11.63}
-  - {x: 5.29, y: 0.71, z: 10.45}
+  - {x: -5.17, y: 0.71, z: 11.28}
+  - {x: 7.8, y: 0.71, z: 11.28}
   - {x: 4.58, y: 0.71, z: 0.85}
-  - {x: -2.07, y: 0.71, z: -10.46}
+  - {x: 5.91, y: 0.71, z: -6.25}
   enemy: {fileID: 1975910943}
 --- !u!1 &1910506226
 GameObject:
@@ -3538,6 +3538,7 @@ MonoBehaviour:
   obstacleMask:
     serializedVersion: 2
     m_Bits: 256
+  target: {fileID: 1872617145}
   visibleTargets: []
   observeRotation: 45
   rotateSpeed: 1
@@ -3548,6 +3549,7 @@ MonoBehaviour:
   - {x: 7.5, y: 1.5, z: 11.5}
   - {x: 7.5, y: 1.5, z: -6}
   chasingPlayer: 0
+  playerInSight: 0
 --- !u!195 &1975910950
 NavMeshAgent:
   m_ObjectHideFlags: 0

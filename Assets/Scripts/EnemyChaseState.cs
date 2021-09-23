@@ -7,27 +7,29 @@ public class EnemyChaseState : EnemyBaseState
 {
     private NavMeshAgent agent;
 
-    private int unseenCount = 60;
+    private int unseenCount = 30;
     private int currCount;
 
     public override void EnterState(EnemyController enemy)
     {
         Debug.Log("chasing");
         agent = enemy.GetComponent<NavMeshAgent>();
-        // set destination as the target/player position
-        agent.SetDestination(enemy.visibleTargets[0].position);
+        // set destination as the player position (the only target)
+        agent.SetDestination(enemy.target.transform.position);
 
         currCount = 0;
     }
 
     public override void Update(EnemyController enemy)
     {
-        if (enemy.visibleTargets.Count > 0 || ++currCount < unseenCount)
+        if (enemy.playerInSight || ++currCount < unseenCount)
         {
-            agent.SetDestination(enemy.visibleTargets[0].position);
+            agent.SetDestination(enemy.target.transform.position);
         }
         else
         {
+            agent.isStopped = true;
+            agent.ResetPath();
             enemy.TransitionToState(enemy.ObservingState);
         }
     }
