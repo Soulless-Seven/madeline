@@ -30,5 +30,10 @@ public class EnemyWanderState : EnemyBaseState
         {
             enemy.TransitionToState(enemy.ObservingState);
         }
+        if (!agent.hasPath && agent.pathStatus == NavMeshPathStatus.PathComplete)
+        {
+            agent.enabled = false;
+            agent.enabled = true;
+        }
     }
 }
