@@ -25,6 +25,8 @@ public class EnemyController : MonoBehaviour
     public List<Vector3> wanderCoordinates;
 
     [Header("Chase State")]
+    public float chaseSpeed;
+    public float chaseAngularSpeed;
     [HideInInspector]
     public bool chasingPlayer = false;
     [HideInInspector]
