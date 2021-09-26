@@ -12,9 +12,9 @@ TagManager:
   - Water
   - UI
   - PostProcessing
-  - Enemy
+  - Monster
   - Obstacles
-  - Target
+  - Player
   - 
   - 
   - 
