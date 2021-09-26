@@ -735,8 +735,9 @@ GameObject:
   - component: {fileID: 174928469}
   - component: {fileID: 174928471}
   - component: {fileID: 174928472}
+  - component: {fileID: 174928473}
   m_Layer: 8
-  m_Name: SmallBox (6)
+  m_Name: SmallBox (6) - Distraction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -834,6 +835,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &174928473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 174928467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3208372ac5763bf439a64f1a0df90cdb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monster: {fileID: 944119368}
 --- !u!1 &197304161
 GameObject:
   m_ObjectHideFlags: 0
@@ -1456,7 +1470,7 @@ GameObject:
   - component: {fileID: 279853043}
   - component: {fileID: 279853042}
   m_Layer: 8
-  m_Name: Floor (1)
+  m_Name: Floor (1) - Distraction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5883,8 +5897,11 @@ MonoBehaviour:
   - {x: 1.6, y: 0, z: -6.5}
   - {x: -1.8, y: 0, z: 3.3}
   - {x: 2.9, y: 0, z: 6.7}
+  chaseSpeed: 0
+  chaseAngularSpeed: 0
   chasingPlayer: 0
   playerInSight: 0
+  positionToInvestigate: {x: 0, y: 0, z: 0}
 --- !u!1 &947476451
 GameObject:
   m_ObjectHideFlags: 0
@@ -10781,8 +10798,11 @@ MonoBehaviour:
   - {x: -2, y: 1.5, z: 10}
   - {x: 7.5, y: 1.5, z: 11.5}
   - {x: 7.5, y: 1.5, z: -6}
+  chaseSpeed: 0
+  chaseAngularSpeed: 0
   chasingPlayer: 0
   playerInSight: 0
+  positionToInvestigate: {x: 0, y: 0, z: 0}
 --- !u!65 &1804032556
 BoxCollider:
   m_ObjectHideFlags: 0

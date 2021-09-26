@@ -32,12 +32,17 @@ public class EnemyController : MonoBehaviour
     [HideInInspector]
     public bool playerInSight = false;
 
+    [Header("Investigate State")]
+    [HideInInspector]
+    public Vector3 positionToInvestigate;
+
     private EnemyBaseState currentState;
     public EnemyBaseState CurrentState { get => currentState; }
 
     public readonly EnemyObservingState ObservingState = new EnemyObservingState();
     public readonly EnemyWanderState WanderState = new EnemyWanderState();
     public readonly EnemyChaseState ChaseState = new EnemyChaseState();
+    public readonly EnemyInvestigateState InvestigateState = new EnemyInvestigateState();
 
 
     void Start()

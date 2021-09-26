@@ -15,6 +15,7 @@ public class EnemyChaseState : EnemyBaseState
     public override void EnterState(EnemyController enemy)
     {
         Debug.Log("chasing");
+
         agent = enemy.GetComponent<NavMeshAgent>();
 
         originalSpeed = agent.speed;

@@ -12,6 +12,7 @@ public class EnemyObservingState : EnemyBaseState
     public override void EnterState(EnemyController enemy)
     {
         Debug.Log("observing");
+
         observeRotation = enemy.observeRotation;
         rotateSpeed = enemy.rotateSpeed;
         observeTime = enemy.observeTime;

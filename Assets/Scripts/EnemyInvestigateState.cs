@@ -3,31 +3,30 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyWanderState : EnemyBaseState
+public class EnemyInvestigateState : EnemyBaseState
 {
-    private List<Vector3> wanderCoordinates;
     private NavMeshAgent agent;
 
-    private int nextPosition = 0;
+    private int waitCount = 30;
+    private int currCount;
 
     public override void EnterState(EnemyController enemy)
     {
-        Debug.Log("wandering");
+        Debug.Log("investigating");
 
-        wanderCoordinates = enemy.wanderCoordinates;
         agent = enemy.GetComponent<NavMeshAgent>();
+        agent.SetDestination(enemy.positionToInvestigate);
 
-        nextPosition = nextPosition + 1 < wanderCoordinates.Count ? nextPosition + 1 : 0;
-        agent.SetDestination(wanderCoordinates[nextPosition]);
+        currCount = 0;
     }
 
     public override void Update(EnemyController enemy)
     {
-        if (enemy.chasingPlayer) 
+        if (enemy.chasingPlayer)
         {
             enemy.TransitionToState(enemy.ChaseState);
         }
-        if (agent.velocity == Vector3.zero)
+        if (agent.velocity == Vector3.zero && ++currCount > waitCount)
         {
             enemy.TransitionToState(enemy.ObservingState);
         }
