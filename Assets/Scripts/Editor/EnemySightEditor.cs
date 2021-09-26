@@ -8,7 +8,7 @@ public class EnemySightEditor : Editor
     {
         EnemyController controller = (EnemyController)target;
 
-        Handles.color = Color.black;
+        Handles.color = Color.white;
         Handles.DrawWireArc(controller.transform.position, Vector3.up, Vector3.forward, 360, controller.viewRadius);
 
         Vector3 viewAngleA = controller.DirFromAngle(-controller.viewAngle / 2, false);
@@ -16,7 +16,7 @@ public class EnemySightEditor : Editor
         Handles.DrawLine(controller.transform.position, controller.transform.position + viewAngleA * controller.viewRadius);
         Handles.DrawLine(controller.transform.position, controller.transform.position + viewAngleB * controller.viewRadius);
 
-        Handles.color = Color.red;
+        Handles.color = Color.blue;
         foreach (Transform visibleTarget in controller.visibleTargets)
         {
             Handles.DrawLine(controller.transform.position, visibleTarget.position);
