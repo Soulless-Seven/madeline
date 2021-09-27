@@ -225,6 +225,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 171482947179441606, guid: 83676a30e0953744cb2fb7f081abf7a6, type: 3}
+      propertyPath: reducedHeight
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3576179568253130145, guid: 83676a30e0953744cb2fb7f081abf7a6, type: 3}
       propertyPath: m_Layer
       value: 10
@@ -242,9 +246,17 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3576179568573875636, guid: 83676a30e0953744cb2fb7f081abf7a6, type: 3}
+      propertyPath: Steps
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 3576179568573875636, guid: 83676a30e0953744cb2fb7f081abf7a6, type: 3}
       propertyPath: FollowTarget
       value: 
       objectReference: {fileID: 285654265}
+    - target: {fileID: 3576179568573875636, guid: 83676a30e0953744cb2fb7f081abf7a6, type: 3}
+      propertyPath: PositionsAgo
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3576179568573875639, guid: 83676a30e0953744cb2fb7f081abf7a6, type: 3}
       propertyPath: m_RootOrder
       value: 6
