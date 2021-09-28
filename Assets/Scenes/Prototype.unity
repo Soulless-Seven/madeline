@@ -2360,9 +2360,8 @@ GameObject:
   - component: {fileID: 174928469}
   - component: {fileID: 174928471}
   - component: {fileID: 174928472}
-  - component: {fileID: 174928473}
   m_Layer: 8
-  m_Name: SmallBox (6) - Distraction
+  m_Name: SmallBox (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2460,19 +2459,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &174928473
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 174928467}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3208372ac5763bf439a64f1a0df90cdb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  monster: {fileID: 944119368}
 --- !u!1 &177397373
 GameObject:
   m_ObjectHideFlags: 0
@@ -7023,6 +7009,10 @@ PrefabInstance:
     - target: {fileID: 6356174285002856404, guid: ac22c12328188a24e9e095d5371db2ea, type: 3}
       propertyPath: m_Layer
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8920113913299084829, guid: ac22c12328188a24e9e095d5371db2ea, type: 3}
+      propertyPath: m_Name
+      value: SmallBox - Distraction
       objectReference: {fileID: 0}
     - target: {fileID: 8920113913299084829, guid: ac22c12328188a24e9e095d5371db2ea, type: 3}
       propertyPath: m_Layer
@@ -26684,6 +26674,19 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8920113913299084829, guid: ac22c12328188a24e9e095d5371db2ea, type: 3}
   m_PrefabInstance: {fileID: 486980501}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1874299396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1874299395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3208372ac5763bf439a64f1a0df90cdb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monster: {fileID: 944119368}
 --- !u!54 &1874299397
 Rigidbody:
   m_ObjectHideFlags: 0
