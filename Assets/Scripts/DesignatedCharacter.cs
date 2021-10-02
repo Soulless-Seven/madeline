@@ -68,28 +68,25 @@ public class DesignatedCharacter : MonoBehaviour
         //swap from character 1 to character 2
         if (Input.GetButtonDown("Swap_Character") && madelineGO.GetComponent<PlayerMovement>().enabled == true)
         {
-            //disable madeline
-            foreach (Behaviour mb in madelineBehaviours)
-                mb.enabled = !mb.enabled;
-
-            //enable caroline (disable follow path script)
-            foreach (Behaviour cb in carolineBehaviours)
-                cb.enabled = !cb.enabled;
+            SwapBehaviors();
 
             //change headphone to play through
             _soundBoard.InEarSource = carolineGO.GetComponentInChildren<AudioSource>();
         }
         else if (Input.GetButtonDown("Swap_Character") && carolineGO.GetComponent<PlayerMovement>().enabled == true)
         {
-            //enable madeline
-            foreach (Behaviour mb in madelineBehaviours)
-                mb.enabled = !mb.enabled;
-
-            //disable caroline (enable follow path script)
-            foreach (Behaviour cb in carolineBehaviours)
-                cb.enabled = !cb.enabled;
+            SwapBehaviors();
 
             _soundBoard.InEarSource = madelineGO.GetComponentInChildren<AudioSource>();
         }
+    }
+
+    private void SwapBehaviors()
+    {
+        foreach (Behaviour mb in madelineBehaviours)
+            mb.enabled = !mb.enabled;
+
+        foreach (Behaviour cb in carolineBehaviours)
+            cb.enabled = !cb.enabled;
     }
 }
