@@ -21,26 +21,44 @@ public class DesignatedCharacter : MonoBehaviour
     public GameObject madelineGO;
     public GameObject carolineGO;
 
-    private GameObject madelineCamera;
-    private GameObject carolineCamera;
+    private Camera madelineCamera;
+    private Camera carolineCamera;
+
+    private AudioListener madelineEars;
+    private AudioListener carolineEars;
+
+    private List<Behaviour> madelineBehaviours;
+    private List<Behaviour> carolineBehaviours;
 
     public GameObject soundManager;
     private SoundBoard _soundBoard;
 
     /**
-     * Character 1 is set as default
-     * Therefore Camera1 and Controls are enabled by default only for character 1
+     * Madeline GO is set as default
+     * Therefore Camera and Controls are enabled by default only for character 1
      */
     void Start ()
     {
-        madelineCamera = madelineGO.transform.Find("Madeline Camera").gameObject;
-        carolineCamera = carolineGO.transform.Find("Caroline Camera").gameObject;
-        madelineCamera.SetActive(true);
-        carolineCamera.SetActive(false);
-        madelineGO.GetComponent<PlayerMovement>().enabled = true;
-        carolineGO.GetComponent<PlayerMovement>().enabled = false;
-        madelineGO.GetComponent<CrouchScript>().enabled = true;
-        carolineGO.GetComponent<CrouchScript>().enabled = false;
+        madelineBehaviours = new List<Behaviour>();
+        madelineBehaviours.Add(madelineGO.GetComponentInChildren<Camera>());
+        madelineBehaviours.Add(madelineGO.GetComponentInChildren<AudioListener>());
+        madelineBehaviours.Add(madelineGO.GetComponentInChildren<PlayerMovement>());
+        madelineBehaviours.Add(madelineGO.GetComponentInChildren<CrouchScript>());
+
+        carolineBehaviours = new List<Behaviour>();
+        carolineBehaviours.Add(carolineGO.GetComponentInChildren<Camera>());
+        carolineBehaviours.Add(carolineGO.GetComponentInChildren<AudioListener>());
+        carolineBehaviours.Add(carolineGO.GetComponentInChildren<PlayerMovement>());
+        carolineBehaviours.Add(carolineGO.GetComponentInChildren<CrouchScript>());
+        carolineBehaviours.Add(carolineGO.GetComponentInChildren<FollowPath>());
+
+        foreach (Behaviour mb in madelineBehaviours)
+            mb.enabled = true;
+
+        foreach (Behaviour cb in carolineBehaviours)
+            cb.enabled = false;
+
+        carolineGO.GetComponentInChildren<FollowPath>().enabled = true;
 
         _soundBoard = soundManager.GetComponent<SoundBoard>();
         _soundBoard.InEarSource = madelineGO.GetComponentInChildren<AudioSource>();
@@ -50,36 +68,28 @@ public class DesignatedCharacter : MonoBehaviour
         //swap from character 1 to character 2
         if (Input.GetButtonDown("Swap_Character") && madelineGO.GetComponent<PlayerMovement>().enabled == true)
         {
-            //disable movement
-            madelineGO.GetComponent<PlayerMovement>().enabled = false;
-            //GetComponent<PlayerMovement>().enabled = true;
-            carolineGO.GetComponent<PlayerMovement>().enabled = true;
-            //disable camera
-            madelineCamera.SetActive(false);
-            carolineCamera.SetActive(true);
-            //disable crouch script
-            madelineGO.GetComponent<CrouchScript>().enabled = false;
-            carolineGO.GetComponent<CrouchScript>().enabled = true;
+            //disable madeline
+            foreach (Behaviour mb in madelineBehaviours)
+                mb.enabled = !mb.enabled;
+
+            //enable caroline (disable follow path script)
+            foreach (Behaviour cb in carolineBehaviours)
+                cb.enabled = !cb.enabled;
+
             //change headphone to play through
             _soundBoard.InEarSource = carolineGO.GetComponentInChildren<AudioSource>();
-            // Deactivate follow script when going to caroline
-            carolineGO.GetComponent<FollowPath>().enabled = false;
         }
         else if (Input.GetButtonDown("Swap_Character") && carolineGO.GetComponent<PlayerMovement>().enabled == true)
         {
-            madelineGO.GetComponent<PlayerMovement>().enabled = true;
-            carolineGO.GetComponent<PlayerMovement>().enabled = false;
+            //enable madeline
+            foreach (Behaviour mb in madelineBehaviours)
+                mb.enabled = !mb.enabled;
 
-            madelineCamera.SetActive(true);
-            carolineCamera.SetActive(false);
-
-            madelineGO.GetComponent<CrouchScript>().enabled = true;
-            carolineGO.GetComponent<CrouchScript>().enabled = false;
+            //disable caroline (enable follow path script)
+            foreach (Behaviour cb in carolineBehaviours)
+                cb.enabled = !cb.enabled;
 
             _soundBoard.InEarSource = madelineGO.GetComponentInChildren<AudioSource>();
-
-            // Activate follow script when going to madeline
-            carolineGO.GetComponent<FollowPath>().enabled = true;
         }
     }
 }
